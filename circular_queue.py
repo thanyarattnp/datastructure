@@ -8,117 +8,70 @@ Original file is located at
 """
 
 class cir_Q:
-  def __init__(self):
-    self.items = [0,0,0,0,0]
-    self.maxQ = 5
-    self. front = 0
-    self.rear = -1
-    self.count = 0
+    def __init__(self):
+        self.items = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        self.maxQ = 20
+        self. front = 0
+        self.rear = -1
+        self.count = 0
 
   ########################
-  def isFull(self):
-    return self.count==self.maxQ
+    def isFull(self):
+        return self.count==self.maxQ
    ########################  
-  def isEmpty(self):
-    return self.rear == -1
+    def isEmpty(self):
+        return self.rear == -1
 
 ## ฟังชัน enqueue(item)ใช้ในการเพิ่มข้อมูล
-  def enqueue(self,item):
-    if (self.isFull()): ## True
-      print("Queue isfull !! ")
-    else:
-      self.rear = (self.rear+1)%self.maxQ
-      self.items[self.rear]=item
-      self.count = self.count+1
+    def enqueue(self,item):
+        if (self.isFull()): ## True
+            return "Queue is full !!"
+        else:
+            self.rear = (self.rear+1)%self.maxQ
+            self.items[self.rear]=item
+            self.count = self.count+1
 
 ## ฟังชันdequeue() ใช้นำข้อมูลออกมาจากคิว
   def dequeue(self):
-    if (self.isEmpty()== True):
-      print("Queue is empty !!")
-    else:
-      item = self.items[self.front]
-      self.front = (self.front+1)%self.maxQ
-      self.count = self.count-1
-    return item
+        if (self.isEmpty()== True):
+            return "Queue is empty !!"
+        else:
+            item = self.items[self.front]
+            self.front = (self.front+1)%self.maxQ
+            self.count = self.count-1
+            return item
 
 ## ฟังก์ชัน Q_front() คืนค่าสมาชิกที่ตำแหน่งหัวแถว
-  def Q_front(self):
-    if (self.isEmpty()== True):
-      print("Queue is empty !!")
-    else:
-      return self.items[self.front]
+    def Q_front(self):
+        if (self.isEmpty()== True):
+            return "Queue is empty !!"
+        else:
+            return self.items[self.front]
 
 ## ฟังก์ชัน Q_rear() คืนค่าสมาชิกที่ตำแหน่งหัวแถว
-  def Q_rear(self):
-    if (self.isEmpty()== True):
-      print("Queue is empty !!")
-    else:
-      return self.items[self.rear]
+    def Q_rear(self):
+        if (self.isEmpty()== True):
+            return "Queue is empty !!"
+        else:
+            return self.items[self.rear]
 
 ## ฟังก์ชัน Q_size() คืนค่าจำนวนสมาชิกในคิว
-  def Q_size(self):
-    return self.rear+1    
+    def Q_size(self):
+        return self.rear+1    
 
 ## ฟังก์ชัน Q_print() แสดงค่าในคิว
-  def Q_print(self):
-    q_member=""
-    if (self.isEmpty()== True):
-      print("Queue is empty !!")
-    else:
-      times=0
-      i=self.front
-      while(times<self.count):
-        q_member=q_member+" " +str(self.items[i])
-        if (i==self.maxQ-1):
-          i = 0
+    def Q_print(self):
+        q_member=""
+        if (self.isEmpty()== True):
+            return "Queue is empty !!"
         else:
-          i=(i+1)%self.maxQ
-        times=times+1
-      return q_member
-
-'''
-q = cir_Q()
-print("Queue is Full : ",q.isFull())
-print("Queue is empty : ",q.isEmpty())
-q.enqueue("A")
-q.enqueue("B")
-q.enqueue("C")
-print(" Q_front :",q.Q_front())
-print(" Q_rear :",q.Q_rear())
-print(" Q_size :",q.Q_size())
-print(q.items)
-print("Q_member :",q.Q_print())
-q.dequeue()
-print(q.items)
-print("Q_member :",q.Q_print())
-q.dequeue()
-print(q.items)
-print("Q_member :",q.Q_print())
-q.dequeue()
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("D")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("E")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("F")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("G")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("H")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("I")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("J")
-print(q.items)
-print("Q_member :",q.Q_print())
-q.enqueue("K")
-print(q.items)
-print("Q_member :",q.Q_print())
-'''
+            times=0
+            i=self.front
+            while(times<self.count):
+                q_member=q_member+" " +str(self.items[i])
+                if (i==self.maxQ-1):
+                    i = 0
+                else:
+                    i=(i+1)%self.maxQ
+                times=times+1
+            return q_member
